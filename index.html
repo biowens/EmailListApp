@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spreadsheet Email Drafts</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Spreadsheet Email Drafts</h1>
+      <p>Upload a spreadsheet, map columns, and generate draft emails.</p>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="card">
+      <h2>1) Upload Spreadsheet</h2>
+      <input id="file-input" type="file" accept=".csv,.xlsx,.xls" />
+      <div id="file-meta" class="muted"></div>
+    </section>
+
+    <section class="card">
+      <h2>TestSection</h2>
+      <select id="testSelect" disabled></select>
+      <button type="button" onclick="test()">testFunction</button>
+      <label id="testLabel">aaa</label>
+    </section>
+
+    <section class="card">
+      <h2>3) Map Columns</h2>
+      <div class="grid">
+        <label>
+          To
+          <select id="map-to" disabled></select>
+        </label>
+        <label>
+          Subject
+          <select id="map-subject" disabled></select>
+        </label>
+        <label>
+          Body
+          <select id="map-body" disabled></select>
+        </label>
+      </div>
+      <div class="hint">Use templates to customize subject/body with placeholders like <code>{{First Name}}</code>.
+      </div>
+      <div class="grid">
+        <label>
+          Subject Template
+          <input id="subject-template" type="text" placeholder="Hello {{First Name}}" />
+        </label>
+        <label>
+          Body Template
+          <textarea id="body-template" rows="6"
+            placeholder="Hi {{First Name}},\n\nThanks for your interest in {{Product}}."></textarea>
+        </label>
+      </div>
+      <div class="actions">
+        <button id="generate" disabled>Generate Drafts</button>
+        <span id="status" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) Preview Drafts</h2>
+      <div class="actions">
+        <button id="export-json" disabled>Export JSON</button>
+        <button id="export-csv" disabled>Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>To</th>
+              <th>Subject</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody id="preview-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+
+</html>
